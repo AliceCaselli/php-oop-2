@@ -38,6 +38,27 @@ require_once 'db.php';
                         <?= $product->getName() ?>
                         <small><i class="fa-solid <?= $product->getCategory()->getIcon() ?>"></i></small>
                     </h5>
+
+                    <p>
+                        <?php
+
+                        switch (get_class($product)) {
+
+                            case 'Food':
+                                echo "Ingredienti: " . $product->getIngredients();
+                                break;
+
+                            case 'Toy':
+                                echo "Materiale: " .  $product->getMaterial();
+                                break;
+
+                            default:
+                                echo "<br>";
+                                break;
+                        }
+
+                        ?>
+                    </p>
                     <strong>Prezzo: <?= $product->getPrice() ?> &euro;</strong>
                     <small>Tipo: <?= $product->getType() ?></small>
                 </div>
